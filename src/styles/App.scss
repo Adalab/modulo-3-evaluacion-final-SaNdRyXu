@@ -1,0 +1,71 @@
+ *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+} 
+
+.tittlehp {
+  width: 100%;
+  max-width: 800px; // Limita el ancho máximo del logo
+  height: auto;     
+
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   
+  
+}
+
+
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+ 
+}
+
+.card-info {
+  border: 15px solid black;
+  width: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  
+ 
+  
+}
+
+.characters {
+  width: 100%;
+  height: 200px;
+  object-fit: hidden; // o 'contain' si quieres que no se recorte nada
+  display: block;
+}
+
+.info {
+  padding: 0.5rem; // 🔹 margen interno alrededor del texto
+  text-align: left;
+}
+
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.house {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
