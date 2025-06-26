@@ -1,11 +1,13 @@
 import React, { use } from 'react';
 import { useEffect, useState } from 'react';
 import './styles/App.scss'
-import titulo from './images/harrypotter.png';
+
 import Search from './components/Search';
 import House from './components/House';
 import { Routes, Route } from 'react-router';
 import CharacterList from './components/CharacterList';
+import CharacterDetail from './components/CharacterDetail';
+import Header from './components/Header';
 
 
 
@@ -14,28 +16,48 @@ import CharacterList from './components/CharacterList';
 function App() {
 
   const [contactsList, setContactsList] = useState([]);
+  const [searchName, setSearchName] = useState("");
+  const [house, setHouse] = useState("");
 
-  useEffect(() => {
-    //que quiero que hagas
+useEffect(() => {
+  fetch("https://hp-api.onrender.com/api/characters/")
+    .then(response => response.json())
+    .then(data => {
+      
+      const dataCleanHouses = data.map(item => ({
+        ...item,
+        house: item.house && item.house.trim() !== "" ? item.house : "Sin casa"
+      }));
 
-    fetch("https://hp-api.onrender.com/api/characters/")
-      .then(response => response.json())
-      .then(data => {
-        setContactsList(data);
-      })
-  }, [])
+      setContactsList(dataCleanHouses);
+    });
+}, []);
 
+const houses = [...new Set(contactsList.map(item => item.house))].sort();
+  console.log(houses);
+
+ const filteredList = contactsList
+    .filter(
+      item => item.name && item.name.toLowerCase().includes(searchName.toLowerCase()))
+      .filter(
+      item =>  house === "" || item.house === house)
    
   return(
     <>
-      <header className="header">
-        <img className="tittlehp" src={titulo} alt="Harry Potter Title" />
-      </header>
-
-      <Search />
-      <House />
-      <CharacterList contactsList={contactsList} />
-
+      <Header />
+      
+      <Routes>
+          <Route index element={
+            <>
+              <Search psearchName={searchName} psetSearchName={setSearchName} />
+              <House phouse={house} psetHouse={setHouse} phouses={houses} />
+              <CharacterList pfilteredList={filteredList} psearchName={searchName} />
+            </>
+        }/>
+        <Route path="/character/:id" element={<CharacterDetail pfilteredList={filteredList} />} />
+        <Route path="*" element={<h2>404 Not Found</h2>} />
+      
+      </Routes>
 
     </>
   )

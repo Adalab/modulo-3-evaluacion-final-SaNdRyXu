@@ -1,25 +1,27 @@
-function CharacterList(contactsList){
+import { Link } from "react-router-dom";
+import Character from "./Character";
+
+
+function CharacterList({pfilteredList, psearchName}){
+
+    if (pfilteredList.length === 0 && psearchName !== "") {
+    return <p className="no-results">No se encuentra el nombre indicado 🧹</p>;
+  }
 
     return(
-        <>
-            <div className='container'>
+        
+            
+            <div >
                 <div className='cards'>
-                    {contactsList.contactsList.map((item, index) => (
-                        
-                            <div className='card-info' key={index}>
-                                <img className='characters' src={item.image || `https://placecats.com/300/400`} alt={item.name} />
-                                <div className='info'>
-                                <h3>{item.name}</h3>
-                                <p>Casa: {item.house}</p>
-                                <p>Especie: {item.species}</p>
-                                </div>
-                            </div>
-                        
+                    {pfilteredList.map((item, index) => (
+                        <Link to={`/character/${item.id}`} className="back-link" key={index}>
+                       <Character key={index} item={item} index={index} />     
+                        </Link>
                     ))}
                 </div>
             </div>
 
-        </>
+            
     )
 
 }

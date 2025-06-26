@@ -1,11 +1,27 @@
-function Search(){
+function Search({ psearchName, psetSearchName}){
+
+    const handleName = (ev) => {
+        ev.preventDefault();
+        psetSearchName(ev.target.value);
+
+    }
+
     return(
         <>
-            <div className="search">
+        <div className="search">
                 
-                <h2>Buscar por personaje : <input type="text" placeholder="Escribe un nombre..." /></h2>
+            <form onSubmit={(e) => e.preventDefault()}>
+                <label htmlFor="searchInput">Buscar por personaje:</label>
+                    <input
+                        id="searchInput"
+                        type="search"
+                        placeholder="Escribe un nombre..."
+                        value={psearchName}
+                        onChange={handleName}
+                    />
+            </form>
      
-            </div>
+        </div>
         
         </>
     )

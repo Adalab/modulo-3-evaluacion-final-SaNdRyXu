@@ -3,7 +3,15 @@
     padding: 0;
     box-sizing: border-box;
     
+    
+    
 } 
+
+p, h1, h3, h4, h5, h6 {
+  text-transform: capitalize;
+}
+
+
 
 .tittlehp {
   width: 100%;
@@ -46,7 +54,7 @@
 .characters {
   width: 100%;
   height: 200px;
-  object-fit: hidden; // o 'contain' si quieres que no se recorte nada
+  
   display: block;
 }
 
@@ -69,3 +77,88 @@
   align-items: center;
   margin-top: 20px;
 }
+
+.no-results{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Ocupa toda la altura de la ventana
+  font-size: 24px; // Tamaño de fuente grande para destacar el mensaje
+  color: red; // Color rojo para llamar la atención
+  
+}
+
+.characters1{
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+
+}
+
+.container{
+  
+  display: grid;
+  grid-template-columns: 250px 200px 200px; 
+  gap: 1rem;
+  align-items: stretch;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
+}
+
+.info{
+ text-align: left;
+ 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  padding: 1.5rem;
+  height: 100%;
+
+  
+}
+
+.character-detail{
+  gap: 20px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.house-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+
+  &.gryffindor {
+    background-image: url("/src/images/gryffindor.jpg");
+  }
+
+  &.slytherin {
+    background-image: url("/src/images/slytherin.jpg");
+  }
+
+  &.ravenclaw {
+    background-image: url("/src/images/ravenclaw.jpg");
+  }
+
+  &.hufflepuff {
+    background-image: url("/src/images/hufflepuff.jpg");
+  }
+
+  &.sin-casa {
+    background-image: url("/src/images/sin-casa.jpg");
+  }
+}
+
+
+
