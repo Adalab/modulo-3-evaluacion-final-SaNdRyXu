@@ -7,25 +7,22 @@ function House({phouse, psetHouse, phouses}){
 
     return(
 
-        
-        <>
         <div className="house">
                 
-                <label>Selecciona la casa: <select className="select-house" name="house" value={phouse} onChange={handleHouseChange} id="house">
-                        <option value="">Todas</option>
+            <label>Selecciona la casa: <select className="select-house" name="house" value={phouse} onChange={handleHouseChange} id="house">
+                    <option value="">Todas</option>
 
-                    {phouses.map((house, index) =>
-                    <option key={index} value={house}> {house}</option>
+            {phouses.map((house) =>
+                <option key={house} value={house}> {house}</option>
                 )}
-
-                        
-                    </select>
-                </label>
      
-            </div>
+                    </select>
+            </label>
+     
+        </div>
 
         
-        </>
+        
     )
 }
 export default House;

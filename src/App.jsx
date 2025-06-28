@@ -26,21 +26,14 @@ function App() {
   };
 
 
-
   const houses = [...new Set(contactsList.map(item => item.house))].sort();
-  console.log(houses);
-
   const species = [...new Set(contactsList.map(item => item.species))].sort();
-  console.log(species);
-
-
+  
 
  const filteredList = contactsList
-    .filter(
-      item => item.name && item.name.toLowerCase().includes(searchName.toLowerCase()))
-      .filter(
-      item =>  house === "" || item.house === house)
-      .filter(item => specie === "" || item.species === specie);
+    .filter(item => item.name && item.name?.toLowerCase().includes(searchName.toLowerCase()))
+    .filter(item =>  house === "" || item.house === house)
+    .filter(item => specie === "" || item.species === specie);
 
       useEffect(() => {
   fetch("https://hp-api.onrender.com/api/characters/")

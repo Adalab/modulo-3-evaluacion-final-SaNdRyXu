@@ -7,7 +7,7 @@ function Search({ psearchName, psetSearchName}){
     }
 
     return(
-        <>
+        
         <div className="search">
                 
             <form onSubmit={(e) => e.preventDefault()}>
@@ -23,7 +23,7 @@ function Search({ psearchName, psetSearchName}){
      
         </div>
         
-        </>
+        
     )
 }
 export default Search;

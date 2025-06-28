@@ -31,9 +31,6 @@ const SpeciesIcon = ({ species }) => {
   const icon = getSpeciesIcon(species);
   return <span>{species} {icon}</span>
 
-
 }
-
-
 
 export default SpeciesIcon;

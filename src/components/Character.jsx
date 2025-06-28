@@ -1,10 +1,10 @@
 
 
-function Character ({item, index}) {
+function Character ({item}) {
 
     return(
-        <>
-                        <div className='card-info' key={index}>
+        
+                        <div className='card-info'>
                                 <img className='characters' src={item.image || `https://placecats.com/300/400`} alt={item.name} />
                                 <div className='info'>
                                 <h3>{item.name}</h3>
@@ -13,7 +13,7 @@ function Character ({item, index}) {
                                 </div>
                             </div>
         
-        </>
+        
     )
 }
 export default Character;

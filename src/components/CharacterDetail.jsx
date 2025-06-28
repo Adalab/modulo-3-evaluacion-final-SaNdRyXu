@@ -2,11 +2,22 @@ import { useParams, useNavigate } from "react-router-dom";
 import SpeciesIcon from "./SpeciesIcon";
 
 
-function CharacterDetail({pfilteredList, }){
+function CharacterDetail({pfilteredList}){
+
     const {id} = useParams();
-    
     const contact = pfilteredList.find(item => String(item.id) === id)
     const navigate = useNavigate();
+
+   if (pfilteredList.length > 0 && !contact) {
+    return (
+        <div className="character-detail">
+            <p className="no-results">🧙‍♂️ El personaje que buscas no existe.</p>
+            <button className="button" onClick={() => navigate(-1)}>Volver</button>
+        </div>
+  );
+}
+    
+
 
     return (
        
@@ -15,9 +26,7 @@ function CharacterDetail({pfilteredList, }){
         <div className="container">
         
             <img className='characters1' src={contact.image || `https://placecats.com/300/400`} alt={contact.name} /> 
-            <div
-    className={`house-image ${contact.house === "Sin casa" ? "sin-casa" : contact.house.toLowerCase()}`}
-  ></div>
+            <div className={`house-image ${ contact.house === "Sin casa" ? "sin-casa" : contact.house?.toLowerCase()}`}></div>
             <div className="info">
             <p>Nombre: {contact.name}</p>
             <p>Estado: {contact.alive ? "🟢 Vivo/a" : "⚰️ Fallecido/a"}</p>

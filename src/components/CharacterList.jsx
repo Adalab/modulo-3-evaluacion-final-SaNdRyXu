@@ -9,19 +9,15 @@ function CharacterList({pfilteredList, psearchName}){
   }
 
     return(
-        
-            
-            <div >
-                <div className='cards'>
-                    {pfilteredList.map((item, index) => (
-                        <Link to={`/character/${item.id}`} className="back-link" key={index}>
-                       <Character key={index} item={item} index={index} />     
-                        </Link>
-                    ))}
-                </div>
-            </div>
-
-            
+    
+        <div className='cards'>
+            {pfilteredList.map((item, index) => (
+                <Link to={`/character/${item.id}`} className="back-link" key={index}>
+                <Character item={item} />     
+                </Link>
+                ))}
+        </div>
+   
     )
 
 }
