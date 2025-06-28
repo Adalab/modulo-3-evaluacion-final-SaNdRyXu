@@ -11,8 +11,7 @@ function House({phouse, psetHouse, phouses}){
         <>
         <div className="house">
                 
-                <h2>Selecciona la casa : 
-                    <select name="house" value={phouse} onChange={handleHouseChange} id="house">
+                <label>Selecciona la casa: <select className="select-house" name="house" value={phouse} onChange={handleHouseChange} id="house">
                         <option value="">Todas</option>
 
                     {phouses.map((house, index) =>
@@ -21,7 +20,7 @@ function House({phouse, psetHouse, phouses}){
 
                         
                     </select>
-                </h2>
+                </label>
      
             </div>
 

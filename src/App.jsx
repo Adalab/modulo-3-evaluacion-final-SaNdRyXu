@@ -8,6 +8,7 @@ import { Routes, Route } from 'react-router';
 import CharacterList from './components/CharacterList';
 import CharacterDetail from './components/CharacterDetail';
 import Header from './components/Header';
+import Species from './components/Species';
 
 
 
@@ -18,6 +19,7 @@ function App() {
   const [contactsList, setContactsList] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [house, setHouse] = useState("");
+  const [specie, setSpecies] = useState("");
 
 useEffect(() => {
   fetch("https://hp-api.onrender.com/api/characters/")
@@ -36,11 +38,17 @@ useEffect(() => {
 const houses = [...new Set(contactsList.map(item => item.house))].sort();
   console.log(houses);
 
+  const species = [...new Set(contactsList.map(item => item.species))].sort();
+  console.log(species);
+
+
+
  const filteredList = contactsList
     .filter(
       item => item.name && item.name.toLowerCase().includes(searchName.toLowerCase()))
       .filter(
       item =>  house === "" || item.house === house)
+      .filter(item => specie === "" || item.species === specie);
    
   return(
     <>
@@ -51,6 +59,7 @@ const houses = [...new Set(contactsList.map(item => item.house))].sort();
             <>
               <Search psearchName={searchName} psetSearchName={setSearchName} />
               <House phouse={house} psetHouse={setHouse} phouses={houses} />
+              <Species pspecie={specie} psetSpecies={setSpecies} pspecies={species} />
               <CharacterList pfilteredList={filteredList} psearchName={searchName} />
             </>
         }/>

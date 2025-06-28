@@ -1,7 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
+import SpeciesIcon from "./SpeciesIcon";
 
 
-function CharacterDetail({pfilteredList}){
+function CharacterDetail({pfilteredList, }){
     const {id} = useParams();
     
     const contact = pfilteredList.find(item => String(item.id) === id)
@@ -18,11 +19,11 @@ function CharacterDetail({pfilteredList}){
     className={`house-image ${contact.house === "Sin casa" ? "sin-casa" : contact.house.toLowerCase()}`}
   ></div>
             <div className="info">
-            <p>{contact.name}</p>
-            <p>{contact.alive ? "🟢 Vivo/a" : "⚰️ Fallecido/a"}</p>
-            <p>{contact.species}</p>
-            <p>{contact.gender}</p>
-            <p>{contact.house}</p>
+            <p>Nombre: {contact.name}</p>
+            <p>Estado: {contact.alive ? "🟢 Vivo/a" : "⚰️ Fallecido/a"}</p>
+            <p>Especie: <SpeciesIcon species={contact.species} /></p>
+            <p>Genero: {contact.gender}</p>
+            <p>Casa: {contact.house}</p>
             </div>
 
         </div>

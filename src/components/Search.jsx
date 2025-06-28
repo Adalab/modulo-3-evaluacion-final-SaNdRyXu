@@ -11,8 +11,8 @@ function Search({ psearchName, psetSearchName}){
         <div className="search">
                 
             <form onSubmit={(e) => e.preventDefault()}>
-                <label htmlFor="searchInput">Buscar por personaje:</label>
-                    <input
+                <label htmlFor="searchInput">Buscar por personaje: </label>
+                    <input className="search-input"
                         id="searchInput"
                         type="search"
                         placeholder="Escribe un nombre..."
